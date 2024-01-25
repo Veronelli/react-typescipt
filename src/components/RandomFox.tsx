@@ -2,19 +2,27 @@ import { useState } from "react";
 type TProps = {
   image: string;
 };
-const RANDOM_IMAGE_NUMBER =()=> Math.floor(Math.random() * 123) + 1;
+const getRandomImageNumber = () => Math.floor(Math.random() * 123) + 1;
+const getRandomID = () => Math.floor(Math.random() * 1000000) + 1;
+type TImageItem = {
+  id: number;
+  url: string;
+};
 
 export const RandomFox = ({ image }: TProps): JSX.Element => {
-  const [images, setImages] = useState<string[]>([
-    `${image}${RANDOM_IMAGE_NUMBER()}.jpg`,
-    `${image}${RANDOM_IMAGE_NUMBER()}.jpg`,
-    `${image}${RANDOM_IMAGE_NUMBER()}.jpg`,
-    `${image}${RANDOM_IMAGE_NUMBER()}.jpg`,
+  const [images, setImages] = useState<TImageItem[]>([
+    { id: getRandomID(), url: `${image}${getRandomImageNumber()}.jpg` },
+    { id: getRandomID(), url: `${image}${getRandomImageNumber()}.jpg` },
+    { id: getRandomID(), url: `${image}${getRandomImageNumber()}.jpg` },
+    { id: getRandomID(), url: `${image}${getRandomImageNumber()}.jpg` },
   ]);
   return (
     <>
       {images.map((image, index) => (
-        <img key={index} src={image} alt="Random fox" />
+        <img
+          key={image.id}
+          src={image.url}
+          alt="Random fox" />
       ))}
     </>
   );
