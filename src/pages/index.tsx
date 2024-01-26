@@ -15,7 +15,7 @@ export default function Home() {
   const addNewFox: MouseEventHandler<HTMLButtonElement> | undefined = ()=>{
     const newFox: TImageItem = { id: getRandomID(), url: `${FOX_API_URL}${getRandomImageNumber()}.jpg` };
     setImages([...images, newFox]);
-
+    
   }
   return (
     <main
