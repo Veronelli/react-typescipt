@@ -1,4 +1,4 @@
-import { RandomFox } from "@/components/RandomFox";
+import { LazyImage } from "@/components/LazyImage";
 import { Inter } from "next/font/google";
 import { MouseEventHandler, useState } from "react";
 
@@ -24,7 +24,9 @@ export default function Home() {
       <h1>Hola</h1>
       <button onClick={addNewFox}>Add new Fox</button>
       {images.map((image, index) => (
-        <RandomFox key={image.id} image={image.url} />
+        <LazyImage key={image.id}
+        alt="Random fox"
+         src={image.url} />
       ))}
     </main>
   );
