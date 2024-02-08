@@ -1,9 +1,10 @@
 import { LazyImage } from "@/components/LazyImage";
 import { Inter } from "next/font/google";
 import { MouseEventHandler, useState } from "react";
+import {random} from "lodash";
 
 const inter = Inter({ subsets: ["latin"] });
-const getRandomImageNumber = () => Math.floor(Math.random() * 123) + 1;
+const getRandomImageNumber = () => random(0,123);
 const getRandomID = () => Math.floor(Math.random() * 1000000) + 1;
 type TImageItem = {
   id: number;
@@ -24,9 +25,11 @@ export default function Home() {
       <h1>Hola</h1>
       <button onClick={addNewFox}>Add new Fox</button>
       {images.map((image, index) => (
-        <LazyImage key={image.id}
-        alt="Random fox"
-         src={image.url} />
+        <LazyImage
+          key={image.id}
+          alt="Random fox"
+          src={image.url}
+          onLazyLoad={() => console.log(`Lazy Load ${index}`)} />
       ))}
     </main>
   );
