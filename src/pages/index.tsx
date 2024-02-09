@@ -15,6 +15,7 @@ export default function Home() {
   const [images, setImages] = useState<TImageItem[]>([]);
   const addNewFox: MouseEventHandler<HTMLButtonElement> | undefined = ()=>{
     const newFox: TImageItem = { id: getRandomID(), url: `${FOX_API_URL}${getRandomImageNumber()}.jpg` };
+    window.plausible('Signup');
     setImages([...images, newFox]);
     
   }
